@@ -15,7 +15,7 @@ export default function Home() {
   const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    api.get('/posts/meta/categories').then(r => setCategories(r.data)).catch(() => {});
+    api.get('/posts/meta/categories').then(r => setCategories(Array.isArray(r.data) ? r.data : [])).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -24,9 +24,9 @@ export default function Home() {
     if (selectedCat) params.category = selectedCat;
     if (search) params.search = search;
     api.get('/posts', { params }).then(r => {
-      setPosts(r.data.posts);
-      setTotalPages(r.data.pages);
-    }).finally(() => setLoading(false));
+      setPosts(Array.isArray(r.data.posts) ? r.data.posts : []);
+      setTotalPages(r.data.pages || 1);
+    }).catch(() => setPosts([])).finally(() => setLoading(false));
   }, [page, selectedCat, search]);
 
   const handleSearch = (e) => {
