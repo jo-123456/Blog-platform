@@ -1,0 +1,102 @@
+.author-profile { padding-top: var(--nav-height); }
+
+.profile-hero {
+  background: var(--ink);
+  padding: 48px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(217, 119, 6, 0.15) 0%, transparent 60%);
+}
+
+.profile-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.profile-hero-inner.loading { align-items: flex-start; }
+
+.profile-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+
+.profile-name {
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.profile-unknown {
+  font-size: 1.5rem;
+  color: rgba(255,255,255,0.7);
+  font-family: var(--font-display);
+}
+
+.profile-stats {
+  display: flex;
+  gap: 24px;
+}
+
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-num {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--paper-mid);
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 64px 20px;
+}
+
+.empty-icon { font-size: 2.5rem; margin-bottom: 12px; }
+.empty-state h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 8px; }
+.empty-state p { color: var(--ink-light); }
+
+@media (max-width: 900px) { .profile-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .profile-hero-inner { flex-direction: column; text-align: center; }
+  .profile-stats { justify-content: center; }
+}

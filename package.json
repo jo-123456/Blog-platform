@@ -1,0 +1,11 @@
+{
+  "name": "inkwell-blog-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd backend && npm install && cd ../frontend && npm install",
+    "start:backend": "cd backend && node server.js",
+    "start:frontend": "cd frontend && npm start",
+    "dev": "echo 'Open two terminals: npm run start:backend and npm run start:frontend'"
+  }
+}
