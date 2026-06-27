@@ -125,7 +125,7 @@ export default function Home() {
           <div className="posts-grid">
             {posts.map((post, i) => (
               <div key={post.id} className="fade-in" style={{ animationDelay: `${i * 0.05}s` }}>
-                <PostCard post={post} featured={i === 0 && !selectedCat && !search && page === 1} />
+                <PostCard post={post} featured={false} />
               </div>
             ))}
           </div>
