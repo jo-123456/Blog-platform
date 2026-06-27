@@ -12,16 +12,29 @@ const CATEGORY_COLORS = {
   Science: '#2563eb',
 };
 
+const API_BASE = 'https://blog-platform-nbwn.onrender.com';
+
+function getImageSrc(url) {
+  if (!url) return null;
+  // base64 images — use directly
+  if (url.startsWith('data:')) return url;
+  // already a proxy URL — use directly
+  if (url.includes('proxy-image')) return url;
+  // external URL — route through proxy
+  return `${API_BASE}/api/proxy-image?url=${encodeURIComponent(url)}`;
+}
+
 export default function PostCard({ post, featured = false }) {
   const timeAgo = formatDistanceToNow(new Date(post.created_at), { addSuffix: true });
   const color = CATEGORY_COLORS[post.category] || '#d97706';
+  const imageSrc = getImageSrc(post.cover_image);
 
   return (
     <article className={`post-card ${featured ? 'featured' : ''}`}>
-      {post.cover_image && (
+      {imageSrc && (
         <Link to={`/post/${post.slug}`} className="card-image-wrap">
           <img
-            src={post.cover_image}
+            src={imageSrc}
             alt={post.title}
             className="card-image"
             loading="lazy"
@@ -35,7 +48,7 @@ export default function PostCard({ post, featured = false }) {
 
       <div className="card-body">
         <div className="card-meta-top">
-          {!post.cover_image && (
+          {!imageSrc && (
             <span className="card-category inline" style={{ color, borderColor: color }}>
               {post.category}
             </span>
@@ -58,8 +71,7 @@ export default function PostCard({ post, featured = false }) {
           <div className="card-stats">
             <span className="card-stat">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
               </svg>
               {post.views || 0}
             </span>

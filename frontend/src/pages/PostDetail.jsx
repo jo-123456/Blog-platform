@@ -117,7 +117,7 @@ export default function PostDetail() {
         {/* Cover image */}
         {post.cover_image && (
           <div className="post-cover fade-in stagger-2">
-            <img src={post.cover_image} alt={post.title} />
+            <img src={post.cover_image.startsWith("data:") ? post.cover_image : `https://blog-platform-nbwn.onrender.com/api/proxy-image?url=${encodeURIComponent(post.cover_image)}`} alt={post.title} />
           </div>
         )}
 
