@@ -5,108 +5,109 @@
   right: 0;
   z-index: 1000;
   height: var(--nav-height);
-  background: rgba(250, 250, 249, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(249, 247, 244, 0.88);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom: 1px solid transparent;
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
   border-bottom-color: var(--paper-mid);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04), var(--shadow-sm);
 }
 
 .navbar-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 28px;
   height: 100%;
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   text-decoration: none;
   flex-shrink: 0;
 }
 
 .logo-icon {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   color: var(--accent);
   line-height: 1;
 }
 
 .logo-text {
   font-family: var(--font-display);
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
   flex: 1;
 }
 
 .nav-link {
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  padding: 6px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--ink-muted);
+  color: var(--ink-light);
   transition: all var(--transition);
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
-
 .nav-link:hover { background: var(--paper-warm); color: var(--ink); }
-.nav-link.active { color: var(--ink); background: var(--paper-warm); }
+.nav-link.active { color: var(--ink); background: var(--paper-warm); font-weight: 600; }
 
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin-left: auto;
 }
 
 .auth-buttons { display: flex; align-items: center; gap: 8px; }
 
 .btn-ghost {
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  padding: 7px 15px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
   font-weight: 500;
   color: var(--ink-muted);
-  border: 1px solid var(--paper-mid);
+  border: 1px solid var(--paper-border);
   background: transparent;
   transition: all var(--transition);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
 }
-.btn-ghost:hover { background: var(--paper-warm); color: var(--ink); }
+.btn-ghost:hover { background: var(--paper-warm); color: var(--ink); border-color: var(--paper-mid); }
 
 .btn-primary {
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
+  padding: 7px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
   font-weight: 600;
   color: var(--white);
   background: var(--ink);
-  border: none;
+  border: 1px solid var(--ink);
   transition: all var(--transition);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  letter-spacing: 0.01em;
 }
-.btn-primary:hover { background: var(--ink-muted); transform: translateY(-1px); }
+.btn-primary:hover { background: var(--ink-muted); border-color: var(--ink-muted); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
 
 .user-menu { position: relative; }
 
@@ -114,38 +115,41 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px;
+  padding: 5px 12px 5px 6px;
   border-radius: 40px;
   background: var(--paper-warm);
-  border: 1px solid var(--paper-mid);
+  border: 1px solid var(--paper-border);
   cursor: pointer;
   transition: all var(--transition);
   color: var(--ink-muted);
 }
-.avatar-btn:hover { border-color: var(--ink-faint); color: var(--ink); }
+.avatar-btn:hover { border-color: var(--paper-mid); background: var(--white); box-shadow: var(--shadow-xs); }
 
 .avatar-img {
-  width: 28px; height: 28px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
   background: var(--paper-mid);
+  border: 1.5px solid var(--paper-mid);
 }
 
 .username-display {
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: 0.84rem;
+  font-weight: 600;
   color: var(--ink);
+  letter-spacing: 0.01em;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 10px);
   right: 0;
   width: 240px;
   background: var(--white);
   border: 1px solid var(--paper-mid);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-xl);
   overflow: hidden;
   animation: slideDown 0.15s ease;
   z-index: 100;
@@ -157,20 +161,21 @@
   gap: 12px;
   padding: 16px;
   background: var(--paper-warm);
+  border-bottom: 1px solid var(--paper-mid);
 }
 
-.drop-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--paper-mid); }
-.drop-name { font-weight: 600; font-size: 0.9rem; color: var(--ink); }
-.drop-email { font-size: 0.78rem; color: var(--ink-light); margin-top: 2px; }
+.drop-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--paper-mid); border: 2px solid var(--paper-mid); }
+.drop-name { font-weight: 700; font-size: 0.875rem; color: var(--ink); }
+.drop-email { font-size: 0.75rem; color: var(--ink-light); margin-top: 2px; }
 
-.dropdown-divider { height: 1px; background: var(--paper-mid); margin: 4px 0; }
+.dropdown-divider { height: 1px; background: var(--paper-warm); margin: 4px 0; }
 
 .dropdown-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
-  font-size: 0.88rem;
+  padding: 9px 16px;
+  font-size: 0.86rem;
   color: var(--ink-muted);
   text-decoration: none;
   transition: all var(--transition);
@@ -179,9 +184,10 @@
   width: 100%;
   text-align: left;
   cursor: pointer;
+  font-weight: 500;
 }
 .dropdown-item:hover { background: var(--paper-warm); color: var(--ink); }
-.dropdown-item.danger:hover { background: #fef2f2; color: var(--red); }
+.dropdown-item.danger:hover { background: #fef2f2; color: #dc2626; }
 
 .mobile-toggle {
   display: none;
@@ -216,7 +222,6 @@
 @media (max-width: 768px) {
   .mobile-toggle { display: block; }
   .username-display { display: none; }
-
   .navbar-links {
     position: fixed;
     top: var(--nav-height);
@@ -232,11 +237,7 @@
     transition: all 0.3s ease;
     z-index: 999;
   }
-  .navbar-links.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: all;
-  }
+  .navbar-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
   .nav-link { width: 100%; }
   .auth-buttons .btn-ghost { display: none; }
 }

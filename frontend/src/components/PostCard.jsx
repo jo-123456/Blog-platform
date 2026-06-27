@@ -26,6 +26,7 @@ export default function PostCard({ post, featured = false }) {
             className="card-image"
             loading="lazy"
           />
+          <div className="card-image-overlay" />
           <span className="card-category" style={{ background: color }}>
             {post.category}
           </span>
